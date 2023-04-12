@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Head from "next/head";
 
 function About() {
@@ -8,7 +7,6 @@ function About() {
       <Head>
         <title>About</title>
       </Head>
-      <Navbar />
       <h1>Esta es la página de about</h1>
     </div>
   );

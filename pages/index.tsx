@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar/Navbar";
-import { IProduct } from "../services/product/product.model";
 import Head from "next/head";
+import { IProduct } from "../services/product/product.model";
+import ProductList from "../containers/ProductList";
 
 function Index() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -17,14 +17,8 @@ function Index() {
       <Head>
         <title>Avocados</title>
       </Head>
-      <Navbar />
-      <h1>Hola mundo</h1>
-      <p>avocados</p>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
+      <h1 className="text-center mb-3">All avocados</h1>
+      <ProductList products={products} />
     </div>
   );
 }

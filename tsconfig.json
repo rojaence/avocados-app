@@ -16,9 +16,10 @@
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
-  "baseUrl": ".",
+  "baseUrl": "./",
   "paths": {
-    "@/components/*": ["components/*"],
-    "@/services/*": ["services/*"]
+    "@components/*": ["components/*"],
+    "@services/*": ["services/*"],
+    "@layouts/*": ["layouts/*"]
   }
 }
