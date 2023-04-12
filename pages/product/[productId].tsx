@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 import { IProduct } from "../../services/product/product.model";
 import Head from "next/head";
+import ProductDetail from "../../containers/ProductDetail";
 
 function ProductItem() {
   const [data, setData] = useState<IProduct>();
@@ -22,7 +24,7 @@ function ProductItem() {
       <Head>
         <title>{data?.name}</title>
       </Head>
-      Esta es la página de producto {data?.name}
+      <ProductDetail product={data} />
     </section>
   );
 }
