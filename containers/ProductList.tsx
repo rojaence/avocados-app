@@ -22,10 +22,11 @@ function ProductList({ products }: Props) {
       <Row xs={1} md={2} lg={3} className="g-2">
         {products.map((product) => (
           <Link
+            key={product.id}
             href={`/product/${product.id}`}
             className="text-decoration-none"
           >
-            <Col key={product.id} className="card-transition">
+            <Col className="card-transition">
               <Card className="h-100 shadow-sm text-dark">
                 <CardImg src={product.image} alt={product.name + " image"} />
                 <CardBody>

@@ -1,4 +1,6 @@
 import { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import { store } from "../services/store";
 import Root from "../layouts/Root";
 import "../styles/global.css";
 
@@ -7,9 +9,11 @@ function App({ Component, pageProps }: AppProps) {
   // Layout
   // aditional props
   return (
-    <Root>
-      <Component {...pageProps} />
-    </Root>
+    <Provider store={store}>
+      <Root>
+        <Component {...pageProps} />
+      </Root>
+    </Provider>
   );
 }
 
