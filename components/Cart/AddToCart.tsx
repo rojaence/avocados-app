@@ -1,56 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FormGroup, Form, Input, Button, Row, Col } from "reactstrap";
 
 import { useAppSelector, useAppDispatch } from "../../services/store/hooks";
-import {
-  incrementItem,
-  decrementItem,
-  updateQuantityItem,
-} from "../../services/store/slices/cart";
+import { incrementItem } from "../../services/store/slices/cart";
 
 import { IProduct } from "../../services/product/product.model";
 import Icon from "../Icon";
 
 interface Props {
   product: IProduct;
+  action: "add" | "remove";
 }
 
 function AddToCart({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
+  const quantityInput = useRef<HTMLInputElement>(null);
 
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(event.target.value);
-    value >= 1
-      ? (setQuantity(value),
-        dispatch(
-          updateQuantityItem({ productPayload: product, quantity: value })
-        ))
-      : (setQuantity(1),
-        dispatch(updateQuantityItem({ productPayload: product, quantity: 1 })));
+    const value = parseInt(quantityInput.current.value);
+    value >= 1 ? setQuantity(value) : setQuantity(1);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (quantity >= 1) {
+      dispatch(incrementItem({ productPayload: product, quantity }));
+      alert("Product agregado.");
+      setQuantity(1);
+    }
   };
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row xs={1} md={2}>
         <Col>
           <FormGroup>
             <Input
               type="number"
-              name={product.id}
+              name="quantity"
+              innerRef={quantityInput}
               onChange={handleChange}
-              value={
-                cart.products.find((p) => p.data.id === product.id)?.quantity ||
-                1
-              }
+              value={quantity}
               min={1}
             />
           </FormGroup>
         </Col>
         <Col>
-          <Button color="success d-flex align-items-center gap-2">
+          <Button color="success d-flex align-items-center gap-2" type="submit">
             <Icon name="shoppingCart" color="light" />
             Add to cart
           </Button>

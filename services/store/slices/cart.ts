@@ -26,14 +26,14 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     incrementItem: (state, action: CartAction) => {
-      const { productPayload } = action.payload;
+      const { productPayload, quantity = 1 } = action.payload;
       const product = state.products.find(
         (product) => product.data.id === productPayload.id
       );
       if (product) {
-        product.quantity += 1;
+        product.quantity += quantity;
       } else {
-        state.products.push({ data: productPayload, quantity: 1 });
+        state.products.push({ data: productPayload, quantity });
       }
     },
     decrementItem: (state, action: CartAction) => {
