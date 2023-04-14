@@ -56,11 +56,11 @@ export const cartSlice = createSlice({
         state.products.push({ data: productPayload, quantity });
       }
     },
-    removeProduct: () => {},
+    removeItem: () => {},
   },
 });
 
-export const { incrementItem, decrementItem, updateQuantityItem } =
+export const { incrementItem, decrementItem, updateQuantityItem, removeItem } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

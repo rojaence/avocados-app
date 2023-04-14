@@ -1,6 +1,7 @@
 import { AppProps } from "next/app";
 import { Provider } from "react-redux";
-import { store } from "../services/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "../services/store";
 import Root from "../layouts/Root";
 import "../styles/global.css";
 
@@ -10,9 +11,11 @@ function App({ Component, pageProps }: AppProps) {
   // aditional props
   return (
     <Provider store={store}>
-      <Root>
-        <Component {...pageProps} />
-      </Root>
+      <PersistGate persistor={persistor}>
+        <Root>
+          <Component {...pageProps} />
+        </Root>
+      </PersistGate>
     </Provider>
   );
 }
