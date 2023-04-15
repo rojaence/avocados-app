@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IProduct } from "../../services/product/product.model";
 import Icon from "../Icon";
 
-import { useAppSelector, useAppDispatch } from "../../services/store/hooks";
+import { useAppDispatch } from "../../services/store/hooks";
 import {
   decrementItem,
   incrementItem,

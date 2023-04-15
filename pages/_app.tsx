@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "../services/store";
+import toast, { Toaster } from "react-hot-toast";
 import Root from "../layouts/Root";
 import "../styles/global.css";
 
@@ -14,6 +15,7 @@ function App({ Component, pageProps }: AppProps) {
       <PersistGate persistor={persistor}>
         <Root>
           <Component {...pageProps} />
+          <Toaster />
         </Root>
       </PersistGate>
     </Provider>

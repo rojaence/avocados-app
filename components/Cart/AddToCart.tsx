@@ -4,6 +4,8 @@ import { FormGroup, Form, Input, Button, Row, Col } from "reactstrap";
 import { useAppSelector, useAppDispatch } from "../../services/store/hooks";
 import { incrementItem } from "../../services/store/slices/cart";
 
+import toast from "react-hot-toast";
+
 import { IProduct } from "../../services/product/product.model";
 import Icon from "../Icon";
 
@@ -28,7 +30,7 @@ function AddToCart({ product }: Props) {
     event.preventDefault();
     if (quantity >= 1) {
       dispatch(incrementItem({ productPayload: product, quantity }));
-      alert("Product agregado.");
+      toast.success("Product added.");
       setQuantity(1);
     }
   };
