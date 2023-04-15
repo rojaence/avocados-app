@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../../product/product.model";
+import { IProduct, TProductId } from "../../product/product.model";
 
 interface CartItem {
   data: IProduct;
@@ -19,7 +19,12 @@ interface CartPayload {
   quantity?: number;
 }
 
+interface RemovePayload {
+  productId: TProductId;
+}
+
 type CartAction = PayloadAction<CartPayload>;
+type RemoveAction = PayloadAction<RemovePayload>;
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -56,7 +61,14 @@ export const cartSlice = createSlice({
         state.products.push({ data: productPayload, quantity });
       }
     },
-    removeItem: () => {},
+    removeItem: (state, action: RemoveAction) => {
+      const { productId } = action.payload;
+      let el = state.products.find((p) => p.data.id === productId);
+      if (el) {
+        let index = state.products.indexOf(el);
+        state.products.splice(index, 1);
+      }
+    },
   },
 });
 
