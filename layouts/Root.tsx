@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import MainNavbar from "../components/Navbar/MainNavbar";
+import Footer from "../components/Footer";
 
 interface Props {
   children?: ReactNode;
@@ -12,7 +13,7 @@ function Root({ children }: Props) {
         <MainNavbar />
       </header>
       <main className="app-main">{children}</main>
-      <footer className="app-footer">Coded by Ronny Endara</footer>
+      <Footer className="app-footer" />
     </div>
   );
 }
