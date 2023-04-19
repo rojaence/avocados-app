@@ -1,21 +1,16 @@
 import React from "react";
-
-interface Props {
-  className: string;
-  variant: string;
-  width: number | string;
-  height: number | string;
-}
+import { SkeletonProps } from "./Skeleton.model";
+import styles from "./skeleton.module.css";
 
 function Skeleton({
   className = "",
   height = "100%",
   variant = "rounded",
   width = "100%",
-}: Props) {
+}: Partial<SkeletonProps>) {
   return (
     <div
-      className={`skeleton${variant ? ` skeleton--${variant}` : ""}${
+      className={`${styles.skeleton}${variant ? ` styles[variant]` : ""}${
         className ? ` ${className}` : ""
       }`}
       style={{ width, height }}
