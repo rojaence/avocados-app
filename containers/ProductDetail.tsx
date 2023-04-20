@@ -1,16 +1,17 @@
 import React from "react";
-import { Badge, Col, Container, Row, Table } from "reactstrap";
+import { Badge, Col, Container, Row, Spinner, Table } from "reactstrap";
 import { IProduct } from "../services/product/product.model";
 import AddToCart from "../components/Cart/AddToCart";
 
 interface Props {
   product: IProduct;
+  loading: boolean;
 }
 
-function ProductDetail({ product }: Props) {
+function ProductDetail({ product, loading }: Props) {
   return (
     <Container tag="section">
-      {product ? (
+      {product && !loading ? (
         <Container>
           <Row xs={1} md={2}>
             <Col md={4} lg={5}>
@@ -52,7 +53,17 @@ function ProductDetail({ product }: Props) {
           </Row>
         </Container>
       ) : (
-        "Loading..."
+        <Container>
+          <div
+            className="d-flex justify-content-center align-items-center w-100"
+            style={{ height: "300px" }}
+          >
+            <Spinner
+              color="secondary"
+              style={{ height: "3rem", width: "3rem" }}
+            />
+          </div>
+        </Container>
       )}
     </Container>
   );

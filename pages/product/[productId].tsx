@@ -7,15 +7,21 @@ import ProductDetail from "../../containers/ProductDetail";
 
 function ProductItem() {
   const [data, setData] = useState<IProduct>();
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     query: { productId },
   } = useRouter();
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/api/avo/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
       });
   }, [productId]);
 
@@ -24,7 +30,7 @@ function ProductItem() {
       <Head>
         <title>{data?.name}</title>
       </Head>
-      <ProductDetail product={data} />
+      <ProductDetail product={data} loading={loading} />
     </section>
   );
 }

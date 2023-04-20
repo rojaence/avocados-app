@@ -11,7 +11,6 @@ import Icon from "../Icon";
 
 interface Props {
   product: IProduct;
-  action: "add" | "remove";
 }
 
 function AddToCart({ product }: Props) {
