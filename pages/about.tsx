@@ -8,7 +8,7 @@ import {
   ListGroupItem,
   Row,
 } from "reactstrap";
-import Icon from "../components/Icon";
+import Icon from "../components/Icon/Icon";
 
 interface Tool {
   name: string;

@@ -9,7 +9,7 @@ import {
   NavbarBrand,
   Badge,
 } from "reactstrap";
-import Icon from "../Icon";
+import Icon from "../Icon/Icon";
 import CartButton from "../Cart/CartButton";
 
 function MainNavbar() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "reactstrap";
 import { useAppSelector } from "../../services/store/hooks";
-import Icon from "../Icon";
+import Icon from "../Icon/Icon";
 
 function CartButton() {
   const cart = useAppSelector((state) => state.cart);

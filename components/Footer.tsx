@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
-import Icon from "./Icon";
+import Icon from "./Icon/Icon";
 
 interface Props {
   className: string;

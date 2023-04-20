@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Row } from "reactstrap";
 import Link from "next/link";
 import { IProduct } from "../../services/product/product.model";
-import Icon from "../Icon";
+import Icon from "../Icon/Icon";
 
 import { useAppDispatch } from "../../services/store/hooks";
 import {
