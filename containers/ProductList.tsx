@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 
 import { IProduct } from "../services/product/product.model";
-import Skeleton from "../components/Skeleton/Skeleton";
 import { generateSkeletons } from "../utils";
 
 interface Props {

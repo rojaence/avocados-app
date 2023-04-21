@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 import { IProduct } from "../../services/product/product.model";
 import Head from "next/head";
