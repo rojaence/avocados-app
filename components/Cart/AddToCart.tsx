@@ -7,7 +7,7 @@ import { incrementItem } from "../../services/store/slices/cart";
 import toast from "react-hot-toast";
 
 import { IProduct } from "../../services/product/product.model";
-import Icon from "../../components/Icon/Icon";
+import Icon from "../Icon/Icon";
 
 interface Props {
   product: IProduct;

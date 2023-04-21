@@ -46,7 +46,17 @@ function ProductList({ products, loading }: Props) {
             >
               <Col className="card-transition">
                 <Card className="h-100 shadow-sm text-dark">
-                  <CardImg src={product.image} alt={product.name + " image"} />
+                  <div
+                    className="bg-light"
+                    style={{
+                      aspectRatio: "16 / 9",
+                    }}
+                  >
+                    <CardImg
+                      src={product.image}
+                      alt={product.name + " image"}
+                    />
+                  </div>
                   <CardBody>
                     <CardTitle tag="h4">{product.name}</CardTitle>
                     <CardSubtitle>$ {product.price}</CardSubtitle>
