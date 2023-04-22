@@ -2,29 +2,32 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { IProduct } from "../services/product/product.model";
 import ProductList from "../containers/ProductList";
+import { IAPIAvoResponse } from "../services/database/types";
+import { serverUrl } from "../config";
 
-function Index() {
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+interface Props {
+  products: IProduct[];
+  loading: boolean;
+}
 
-  useEffect(() => {
-    setLoading(true);
-    fetch("api/avo")
-      .then((res) => res.json())
-      .then(({ data, length }) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((err) => setLoading(false));
-  }, []);
+export const getStaticProps = async (params) => {
+  const res = await fetch(`${serverUrl}/api/avo`);
+  const { data }: IAPIAvoResponse = await res.json();
+  return {
+    props: {
+      products: data,
+    },
+  };
+};
 
+function Index({ products }: Props) {
   return (
     <div>
       <Head>
         <title>Avocados</title>
       </Head>
       <h1 className="text-center mb-3">All avocados</h1>
-      <ProductList products={products} loading={loading} />
+      <ProductList products={products} loading={false} />
     </div>
   );
 }
