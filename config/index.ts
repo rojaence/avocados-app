@@ -1,5 +1,7 @@
 const dev = process.env.NODE_ENV !== "production";
 
-export const serverUrl = dev
+/* export const serverUrl = dev
   ? "http://localhost:3000"
-  : `https://avocados-app-six.vercel.app/`;
+  : `https://avocados-app-six.vercel.app/`; */
+
+export const serverUrl = "https://avocados-app-six.vercel.app/";
